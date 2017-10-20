@@ -1,7 +1,7 @@
 VERSION = 3
 PATCHLEVEL = 18
 SUBLEVEL = 75
-EXTRAVERSION = -ソウルテイカー
+EXTRAVERSION = -TwrkStallion
 NAME = Shuffling Zombie Juror
 
 # *DOCUMENTATION*

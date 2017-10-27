@@ -1231,7 +1231,6 @@ ep0_write (struct file *fd, const char __user *buf, size_t len, loff_t *ptr)
 						dev->gadget->ep0, dev->req,
 						GFP_KERNEL);
 				}
-				spin_lock_irq(&dev->lock);
 				--dev->udc_usage;
 				if (retval < 0) {
 					clean_req (dev->gadget->ep0, dev->req);

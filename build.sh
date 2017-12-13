@@ -133,7 +133,7 @@ fi
 
 #@@@@@@@@@@@@@@@@ AnyKernel2 @@@@@@@@@@@@@@@@@@@@@@#
 # Environment variables for flashable zip creation (AnyKernel2)
-ANYKERNEL=./AnyKernel2;
+ANYKERNEL=$PWD/AnyKernel2;
 
 ##sesuaikan lokasi boot arm/arm64 dan nama zImage
 KERNELPATH=arch/arm64/boot;

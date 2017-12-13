@@ -1,0 +1,37 @@
+#
+# initial set kernel zpx inferno
+# 
+
+on property:sys.boot_completed=1
+   
+   # Enable swap
+   swapoff /dev/block/zram0
+   write /sys/block/zram0/reset 1
+   write /sys/block/zram0/disksize 1073741824
+   mkswap /dev/block/zram0
+   swapon /dev/block/zram0
+
+   # disable core control and enable msm thermal
+   write /sys/module/msm_thermal/core_control/enabled 0
+   write /sys/module/msm_thermal/parameters/enabled Y
+
+   # Sett Vibrator Intensity Control
+   write /sys/class/timed_output/vibrator/vtg_level 1322
+   
+   # Tune up swap
+   write /sys/block/zram0/comp_algorithm lz4
+   write /proc/sys/vm/swappiness 50
+   write /proc/sys/vm/dirty_background_ratio 25
+   write /proc/sys/vm/dirty_ratio 50
+   write /proc/sys/vm/vfs_cache_pressure 50
+   write /proc/sys/vm/min_free_kbytes 4096
+   write /proc/sys/vm/dirty_writeback_centisecs 600
+   write /proc/sys/vm/dirty_expire_centisecs 350
+
+on charger
+
+   # downscaling swap when charger
+   write /proc/sys/vm/dirty_background_ratio 5
+   write /proc/sys/vm/dirty_ratio 35
+   write /proc/sys/vm/dirty_writeback_centisecs 300
+   write /proc/sys/vm/dirty_expire_centisecs 175

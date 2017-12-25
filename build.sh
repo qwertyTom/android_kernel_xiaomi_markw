@@ -134,6 +134,7 @@ fi
 #@@@@@@@@@@@@@@@@ AnyKernel2 @@@@@@@@@@@@@@@@@@@@@@#
 # Environment variables for flashable zip creation (AnyKernel2)
 ANYKERNEL=$PWD/AnyKernel2;
+AROMA=$ANYKERNEL/META-INF/com/google/android/aroma;
 
 ##sesuaikan lokasi boot arm/arm64 dan nama zImage
 KERNELPATH=arch/arm64/boot;
@@ -142,13 +143,17 @@ ZIMAGE=Image.gz-dtb
 # NOTE: Generate value for build date before creating zip in order to get accurate value
 DATE=$(date +"%Y%m%d-%H%M");
 
+# generate changelog
+echo "generating changelog . . .";
+git --no-pager log --pretty=oneline --abbrev-commit 1ded9a48..HEAD > $AROMA/changelog.txt
+
 #ubah nama device masing-masing (ido)
 ZIP=ZPX-Inferno-$z-Mido-Nougat-$DATE.zip;
 
 # Create flashable zip
 if [ -f $KERNELPATH/$ZIMAGE ]; then
 echo "Create Flashable zip Anykernel2";
-cp -f $KERNELPATH/$ZIMAGE $ANYKERNEL/$ZIMAGE;
+cp -f $KERNELPATH/$ZIMAGE $ANYKERNEL/anykernel/$ZIMAGE;
 cd $ANYKERNEL/;
 zip -qr9 $ZIP .;
 cd ../..;
@@ -162,7 +167,7 @@ echo "Doing post-cleanup...";
 rm -rf arch/arm/boot/dtb;
 rm -rf $ANYKERNEL/Image.gz-dtb;
 rm -rf $ANYKERNEL/dtb;
-rm -rf drivers/platform/msm/ipa/ipa_common
+rm -rf $AROMA/changelog.txt;
 echo "Done.";
 
 BUILD_END=$(date +"%s")

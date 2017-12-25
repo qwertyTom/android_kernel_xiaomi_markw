@@ -165,8 +165,7 @@ mv -f $ANYKERNEL/$ZIP /root/mido/$ZIP;
 #Then doing cleanup
 echo "Doing post-cleanup...";
 rm -rf arch/arm/boot/dtb;
-rm -rf $ANYKERNEL/Image.gz-dtb;
-rm -rf $ANYKERNEL/dtb;
+rm -rf $ANYKERNEL/anykernel/Image.gz-dtb;
 rm -rf $AROMA/changelog.txt;
 echo "Done.";
 

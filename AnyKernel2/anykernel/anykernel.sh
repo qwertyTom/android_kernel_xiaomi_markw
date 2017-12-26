@@ -39,8 +39,6 @@ dump_boot;
 
 # add inferno initialization script
 insert_line init.rc "import /init.inferno.rc" after "import /init.environ.rc" "import /init.inferno.rc";
-cp /tmp/init.inferno.rc /tmp/anykernel/ramdisk/init.inferno.rc
-chmod 0750 /tmp/anykernel/ramdisk/init.inferno.rc
 cp -rpf $patch/thermal-engine.conf /system/etc/thermal-engine.conf
 
 #remove deprecated ipv6 rmnet entries

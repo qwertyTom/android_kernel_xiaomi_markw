@@ -48,7 +48,7 @@
   echo 3 > /proc/sys/kernel/sched_spill_nr_run
   # Apply inter-cluster load balancer restrictions
   echo 1 > /proc/sys/kernel/sched_restrict_cluster_spill
-  
+
   # interactive setting
   echo "19000 1401600:39000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
   echo 80 > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load

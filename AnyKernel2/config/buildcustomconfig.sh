@@ -28,13 +28,10 @@ echo "#min freq" >> $CONFIGFILE
 cpu0=`grep selected.1 /tmp/aroma/cpu0.prop | cut -d '=' -f2`
 if [ $cpu0 = 1 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 652800" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 652800" >> $CONFIGFILE
 elif [ $cpu0 = 2 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1036800" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 1036800" >> $CONFIGFILE
 else
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1401600" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 1401600" >> $CONFIGFILE
 fi
 
 echo "" >> $CONFIGFILE
@@ -43,16 +40,12 @@ echo "#max freq" >> $CONFIGFILE
 cpu0=`grep selected.2 /tmp/aroma/cpu0.prop | cut -d '=' -f2`
 if [ $cpu0 = 1 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2016000" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2016000" >> $CONFIGFILE
 elif [ $cpu0 = 2 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1958400" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1958400" >> $CONFIGFILE
 elif [ $cpu0 = 3 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1804800" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1804800" >> $CONFIGFILE
 else
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1689600" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1689600" >> $CONFIGFILE
 fi
 
 echo "" >> $CONFIGFILE
@@ -61,28 +54,20 @@ echo "#set cpu governor" >> $CONFIGFILE
 gov=`grep selected.0 /tmp/aroma/gov.prop | cut -d '=' -f2`
 if [ $gov = 1 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor conservative" >> $CONFIGFILE
 elif [ $gov = 2 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor impulse" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor impulse" >> $CONFIGFILE
 elif [ $gov = 3 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor interactive" >> $CONFIGFILE
 elif [ $gov = 4 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor lionfish" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor lionfish" >> $CONFIGFILE
 elif [ $gov = 5 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor ondemand" >> $CONFIGFILE
 elif [ $gov = 6 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor performance" >> $CONFIGFILE
 elif [ $gov = 7 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor powersave" >> $CONFIGFILE
 else
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor userspace" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor userspace" >> $CONFIGFILE
 fi
 
 echo "" >> $CONFIGFILE

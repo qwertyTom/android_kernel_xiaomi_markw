@@ -9,7 +9,19 @@ echo "# Zero ProjectX Â 2017" >> $CONFIGFILE
 
 echo "" >> $CONFIGFILE
 
+echo "# USER TWEAKS" >> $CONFIGFILE
+echo "service usertweaks /system/bin/sh /system/etc/init.qcom.post_boot.sh" >> $CONFIGFILE
+echo "class main" >> $CONFIGFILE
+echo "group root" >> $CONFIGFILE
+echo "user root" >> $CONFIGFILE
+echo "oneshot" >> $CONFIGFILE
+
 echo "on property:sys.boot_completed=1" >> $CONFIGFILE
+
+echo "" >> $CONFIGFILE
+
+echo "# RUN USERTWEAKS SERVICE" >> $CONFIGFILE
+echo "start usertweaks" >> $CONFIGFILE
 
 echo "" >> $CONFIGFILE
 

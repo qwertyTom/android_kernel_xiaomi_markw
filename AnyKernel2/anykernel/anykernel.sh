@@ -65,6 +65,16 @@ remove_line init.qcom.rc "    write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra
 remove_line init.qcom.rc "    write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2"
 remove_line init.qcom.rc "    write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2"
 
+# SELinux Mode
+cmdfile=`ls $split_img/*-cmdline`;
+cmdtmp="androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78af000 buildvariant=userdebug";
+misc2=`grep selected.0 /tmp/aroma/misc2.prop | cut -d '=' -f2`
+if [ $misc2 = 1 ]; then
+rm $cmdfile; echo "$cmdtmp androidboot.selinux=permissive" > $cmdfile;
+else
+rm $cmdfile; echo "$cmdtmp androidboot.selinux=enforcing" > $cmdfile;
+fi
+
 # end ramdisk changes
 
 write_boot;

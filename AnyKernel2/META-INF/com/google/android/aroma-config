@@ -150,6 +150,12 @@ selectbox(
   "1,5GB","",0
 );
 
+selectbox(
+  "\nSELinux Mode","","","misc2.prop",
+  "Permissive","",0,
+  "Enforcing","",1
+);
+
 ini_set("text_next", "Install");
 textbox(
   "\nInstallation",

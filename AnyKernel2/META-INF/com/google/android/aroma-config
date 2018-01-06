@@ -24,8 +24,8 @@ anisplash(
     "anim/zpx", 2000
 );
 
-fontresload( "0", "ttf/droid.ttf", "15" );
-fontresload( "1", "ttf/droid.ttf", "20" ); 
+fontresload( "0", "ttf/droid.ttf", "13" );
+fontresload( "1", "ttf/droid.ttf", "16" ); 
 
 theme("zetsubou");
 
@@ -142,7 +142,7 @@ selectbox(
   "WrinkleeFree Cool","",0,
   "Custom vibrator intensity","",2,
   "30%","",0,
-  "50","",1,
+  "50%","",1,
   "80%","",0,
   "Custom Patch ZRAM","",2,
   "786MB","",0,

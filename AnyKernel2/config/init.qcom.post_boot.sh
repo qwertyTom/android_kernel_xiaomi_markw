@@ -125,12 +125,28 @@
   echo $set_almk_ppr_adj > /sys/module/lowmemorykiller/parameters/adj_max_shift
   echo $set_almk_ppr_adj > /sys/module/process_reclaim/parameters/min_score_adj
 
+  # VM Tune Up
   echo 1 > /sys/module/process_reclaim/parameters/enable_process_reclaim
   echo 70 > /sys/module/process_reclaim/parameters/pressure_max
   echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
   echo 0 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
   echo 50 > /sys/module/process_reclaim/parameters/pressure_min
   echo 512 > /sys/module/process_reclaim/parameters/per_swap_size
-  echo "14746,18432,22118,25805,40000,55000" > /sys/module/lowmemorykiller/parameters/minfree
   echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+  echo '80' > /proc/sys/vm/overcommit_ratio
+  echo '400' > /proc/sys/vm/vfs_cache_pressure
+  echo '24300' > /proc/sys/vm/extra_free_kbytes
+  echo '128' > /proc/sys/kernel/random/read_wakeup_threshold
+  echo '256' > /proc/sys/kernel/random/write_wakeup_threshold
+  echo '0' > /sys/block/mmcblk0/queue/iostats
+  echo '1' > /sys/block/mmcblk0/queue/add_random
+  echo '0' > /sys/block/mmcblk1/queue/iostats
+  echo '1' > /sys/block/mmcblk1/queue/add_random
+  echo '4096' > /proc/sys/vm/min_free_kbytes
+  echo '0' > /proc/sys/vm/oom_kill_allocating_task
+  echo '90' > /proc/sys/vm/dirty_ratio
+  echo '70' > /proc/sys/vm/dirty_background_ratio
+  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+  chown root /sys/module/lowmemorykiller/parameters/minfree
+  echo '21816,29088,36360,43632,50904,65448' > /sys/module/lowmemorykiller/parameters/minfree
 

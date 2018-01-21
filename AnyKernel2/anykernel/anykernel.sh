@@ -39,7 +39,8 @@ dump_boot;
 
 # add inferno initialization script
 insert_line init.rc "import /init.inferno.rc" after "import /init.environ.rc" "import /init.inferno.rc";
-cp -rpf $patch/thermal-engine.conf /system/etc/thermal-engine.conf
+cp -f $patch/thermal-engine.conf /system/etc/thermal-engine.conf
+chmod 0644 /system/etc/thermal-engine.conf
 
 #remove deprecated ipv6 rmnet entries
 remove_line init.qcom.rc "    #To allow interfaces to get v6 address when tethering is enabled"

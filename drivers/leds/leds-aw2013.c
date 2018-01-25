@@ -50,7 +50,7 @@
 #define MAX_RISE_TIME_MS		7
 #define MAX_HOLD_TIME_MS		5
 #define MAX_FALL_TIME_MS		7
-#define MAX_OFF_TIME_MS			5
+#define MAX_OFF_TIME_MS			7
 
 struct aw2013_led {
 	struct i2c_client *client;
@@ -288,7 +288,7 @@ static void aw2013_led_work(struct work_struct *work)
 			led->cdev.brightness);
 		aw2013_read(led, AW_REG_LED_ENABLE, &val);
 
-		if (led->blinking != led->cur_blinking) {
+		if ((led->blinking != led->cur_blinking) || led->cur_blinking) {
 			// sync up the blinking by pulling them all down first
 			aw2013_write(led, AW_REG_GLOBAL_CONTROL, 0);
 			aw2013_write(led, AW_REG_LED_ENABLE, 0);

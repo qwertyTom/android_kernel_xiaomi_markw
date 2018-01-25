@@ -20,7 +20,7 @@ TOOL_CHAIN_ARM=aarch64-linux-android-
 #@@@@@@@@@@@@@@@@@@@@@@ DEFINITIONS BEGIN @@@@@@@@@@@@@@@@@@@@@@@@@@@#
 ##### Tool-chain, you should get it yourself which tool-chain
 ##### you would like to use
-KERNEL_TOOLCHAIN=~/Desktop/kernel-n/android_kernel_xiaomi_markw_n/tool/rom/bin/$TOOL_CHAIN_ARM
+KERNEL_TOOLCHAIN=~/rom2/tch/bin/$TOOL_CHAIN_ARM
 
 ## This script should be inside the kernel-code directory
 KERNEL_DIR=$PWD
@@ -159,8 +159,8 @@ zip -qr9 $ZIP .;
 cd ../..;
 
 # The whole process is now complete. Now do some touches...
-# move ZIP to /root
-mv -f $ANYKERNEL/$ZIP ~/markw/$ZIP;
+# move ZIP to /rom2
+mv -f $ANYKERNEL/$ZIP ~/rom2/$ZIP;
 
 #Then doing cleanup
 echo "Doing post-cleanup...";
@@ -190,4 +190,3 @@ echo "                                        "
 echo -e "$yellow Build completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds.$nocol"
 echo "#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#"
 fi
-exit
